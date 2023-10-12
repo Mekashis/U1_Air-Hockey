@@ -20,7 +20,7 @@ public class Pin : MonoBehaviour
     {
         if (!renderer.isVisible)
         {
-            rb.velocity = Vector3.zero;
+            rb.velocity = Vector2.zero;
             transform.position = Vector3.zero;
         }
     }

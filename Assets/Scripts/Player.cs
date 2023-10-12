@@ -24,7 +24,7 @@ public class Player : MonoBehaviour
         mousePos = Input.mousePosition;
 
         //check if out of bounds
-        if(mousePos.x < 0 || mousePos.x > Screen.width ||
+        if (mousePos.x < 0 || mousePos.x > Screen.width ||
             mousePos.y < 0 || mousePos.y > Screen.height)
         {
             return;
@@ -33,7 +33,11 @@ public class Player : MonoBehaviour
         worldPos = Camera.main.ScreenToWorldPoint(mousePos);
         worldPos.z = 0;
         //transform.position = worldPos;
-        targetPos = Vector2.MoveTowards(transform.position, worldPos, speed);
-        rb.MovePosition(targetPos);
+        targetPos = Vector2.MoveTowards(transform.position, worldPos, speed * Time.deltaTime);
+
+        if (targetPos.x > 0)
+        {
+            rb.MovePosition(targetPos);
+        }
     }
 }
